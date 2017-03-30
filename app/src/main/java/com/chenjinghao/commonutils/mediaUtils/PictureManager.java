@@ -6,4 +6,8 @@ package com.chenjinghao.commonutils.mediaUtils;
 
 public class PictureManager {
 
+    public void getPictureWithScale(){
+
+    }
+
 }
