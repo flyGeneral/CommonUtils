@@ -1,6 +1,9 @@
 package com.chenjinghao.imagesdk;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -9,6 +12,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 /**
  * 初始化UniverImagerLoader，并用来加载图片
@@ -58,8 +62,45 @@ public class ImageLoaderManager {
         return mInstance;
     }
 
+    /**
+     * 实现我们默认的Options
+     * @return
+     */
     public DisplayImageOptions getDefaultOption() {
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .showImageForEmptyUri(R.drawable.ic_launcher)//图片地址为空时加载的图片
+                .showImageOnFail(R.drawable.ic_launcher)//图片下载失败时显示的图片
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)//图片解码类型
+                .decodingOptions(new BitmapFactory.Options())//图片解码配置
+                .build();
+        return options;
+    }
 
-        return defaultOption;
+    /**
+     * 加载图片的API
+     * @param imageView
+     * @param url
+     * @param options
+     * @param listener
+     */
+    public void displayImage(ImageView imageView, String url, DisplayImageOptions options,
+                             ImageLoadingListener listener){
+        if (mImagerLoader != null){
+            mImagerLoader.displayImage(url,imageView, options, listener);
+        }
+    }
+
+    public void displayImage(ImageView imageView, String url, ImageLoadingListener listener){
+        displayImage(imageView, url, null, listener);
+    }
+
+    public void displayImage(ImageView imageView, String url){
+        displayImage(imageView, url, null, null);
+    }
+
+    public void displayImage(ImageView imageView, String url, DisplayImageOptions options){
+        displayImage(imageView, url, options, null);
     }
 }
