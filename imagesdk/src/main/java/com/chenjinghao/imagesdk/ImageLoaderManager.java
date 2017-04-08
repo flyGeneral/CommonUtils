@@ -10,6 +10,7 @@ import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -72,8 +73,11 @@ public class ImageLoaderManager {
                 .showImageOnFail(R.drawable.ic_launcher)//图片下载失败时显示的图片
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
+//                .considerExifParams(true)  //是否考虑JPEG图像EXIF参数（旋转，翻转）
+//                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)//设置图片以如何的编码方式显示
                 .bitmapConfig(Bitmap.Config.RGB_565)//图片解码类型
                 .decodingOptions(new BitmapFactory.Options())//图片解码配置
+//                .resetViewBeforeLoading(true)//设置图片在下载前是否重置，复位
                 .build();
         return options;
     }
