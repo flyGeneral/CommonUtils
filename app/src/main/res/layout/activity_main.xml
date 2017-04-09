@@ -17,4 +17,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="进入图片展示"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_scan_q_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="扫码"/>
+        <TextView
+            android:id="@+id/tv_show_q_code_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="扫码结果："/>
+    </LinearLayout>
+
 </LinearLayout>
