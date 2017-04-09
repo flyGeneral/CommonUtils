@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.chenjinghao.commonutils.memoryUtils.MemoryManager;
+import com.chenjinghao.zxingsdk.zxing.app.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_show_picture:
-                Intent toShowPicture = new Intent(this, ShowPictureActivity.class);
+                Intent toShowPicture = new Intent(this, CaptureActivity.class);
                 startActivity(toShowPicture);
                 break;
         }
