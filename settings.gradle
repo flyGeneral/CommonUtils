@@ -1,1 +1,1 @@
-include ':app', ':imagesdk', ':zxingsdk'
+include ':app', ':commonsdk', ':zxingsdk'
