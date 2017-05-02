@@ -52,7 +52,7 @@ public class ImageLoaderManager {
         mImagerLoader = ImageLoader.getInstance();
     }
 
-    private static ImageLoaderManager getInstance(Context context){
+    public static ImageLoaderManager getInstance(Context context){
         if (mInstance == null){
             synchronized (ImageLoaderManager.class){
                 if (mInstance == null){
@@ -67,17 +67,17 @@ public class ImageLoaderManager {
      * 实现我们默认的Options
      * @return
      */
-    public DisplayImageOptions getDefaultOption() {
+    private DisplayImageOptions getDefaultOption() {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .showImageForEmptyUri(R.drawable.ic_launcher)//图片地址为空时加载的图片
                 .showImageOnFail(R.drawable.ic_launcher)//图片下载失败时显示的图片
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
-//                .considerExifParams(true)  //是否考虑JPEG图像EXIF参数（旋转，翻转）
-//                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)//设置图片以如何的编码方式显示
+                .considerExifParams(true)  //是否考虑JPEG图像EXIF参数（旋转，翻转）
+                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)//设置图片以如何的编码方式显示
                 .bitmapConfig(Bitmap.Config.RGB_565)//图片解码类型
                 .decodingOptions(new BitmapFactory.Options())//图片解码配置
-//                .resetViewBeforeLoading(true)//设置图片在下载前是否重置，复位
+                .resetViewBeforeLoading(true)//设置图片在下载前是否重置，复位
                 .build();
         return options;
     }
